@@ -22,4 +22,4 @@ gulp.task('build', gulp.series(
 ));
 
 // Watch for changes.
-gulp.task('watch', () => gulp.watch(['./src/*.js'], 'build'));
+gulp.task('watch', () => gulp.watch(['./src/*.js'], gulp.series(['build'])));

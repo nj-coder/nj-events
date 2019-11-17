@@ -1,1 +1,1 @@
-export default class NJEvent{constructor(){this.events={};console.log(12)}}
+class NJEvent{constructor(){this.events={}}on(e,t,s){if("function"!=typeof t)throw"listener is not a function";let n=Math.random().toString(36).substring(7);return(this.events[e]=this.events[e]||{})[n]={listener:t,once:s},n}off(e,t){void 0===e&&void 0===t?this.events={}:e&&t?delete this.events[e][t]:delete this.events[e]}emit(e){var t=[].slice.call(arguments,1);this.events[e]&&Object.keys(this.events[e]).forEach(s=>{this.events[e][s].listener.call(null,1==t.length?t[0]:t)})}}
