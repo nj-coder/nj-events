@@ -12,8 +12,8 @@ const emitter = new NJEvents();
 
 const id = emitter.on('hey', data => {
   console.log(data);
-})
+});
 
-emitter.emit('hey', 2)
-emitter.off(id);
+emitter.emit('hey', 2);
+emitter.off('hey', id); /**OR**/ emitter.off('hey');
 ```
