@@ -5,6 +5,7 @@ Simple and light-weight event emitter library for JavaScript.
 * Less than **1KB**.
 * `on` method returns `ID`. Use this `ID` to remove specific listener or `event-name` to remove all the listeners.
 * No aliases, just `emit` and `on` methods.
+* No dependencies, pure JavaScript implementation
 
 ```js
 const emitter = new NJEvents();
@@ -16,8 +17,6 @@ const id = emitter.on('hey', data => {
 emitter.emit('hey', 'how are you?');
 emitter.off(id); 
 ```
-## Dependencies
-There are no hard dependencies to actually use NJEvents. The only reason you will want to run `npm install` is to build/modify the source code. 
 
 ## Installation
 NJ-Events can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
