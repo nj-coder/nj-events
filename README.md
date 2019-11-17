@@ -2,8 +2,8 @@
 
 Simple and light-weight event emitter library for JavaScript.
 
-* Only **500 bytes**.
-* `on` method returns `ID`. Use this `ID` or `event-name` to remove specific or all listeners.
+* Less than **1KB**.
+* `on` method returns `ID`. Use this `ID` to remove specific listener or `event-name` to remove all the listeners.
 * No aliases, just `emit` and `on` methods.
 
 ```js
