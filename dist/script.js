@@ -1,5 +1,6 @@
 var NJEvents = function () {
     this.events = {};
+    this.listeners = {};
 };
 /**
  * register event
@@ -7,13 +8,15 @@ var NJEvents = function () {
  * @param {function} cb
  * @param {string} id
  */
-NJEvents.prototype.on = function (event, cb, id) {
+NJEvents.prototype.on = function (name, cb, id) {
     if (typeof (cb) != 'function') {
         throw ('invalid listener.');
     }
     let evID = id || Math.random().toString(36).substring(7);
-    (this.events[event] = this.events[event] || {})[evID] = {
-        cb: cb
+    (this.events[name] = this.events[name] || []).push(evID);
+    this.listeners[evID] = {
+        cb: cb, // call back
+        ev: name // event name
     };
     return evID;
 };
@@ -21,31 +24,37 @@ NJEvents.prototype.on = function (event, cb, id) {
  * register a one time event 
 */
 NJEvents.prototype.once = function (event, listener, id) {
-    let ev = this.on(event, listener, id);
-    this.events[event][ev].once = true;
+    let key = this.on(event, listener, id);
+    this.listeners[key].once = true;
 };
 /**
  * unregister event
  * @param {string} event 
  * @param {string} evID 
  */
-NJEvents.prototype.off = function (event, evID) {
-    if (event && evID) {
-        delete this.events[event][evID];
-    } else {
-        delete this.events[event];
+NJEvents.prototype.off = function (key) {
+    if (this.events[key]) { // check if key matches a event name
+        this.events[key].forEach(ev => {
+            delete this.listeners[ev];
+        });
+        delete this.events[key];
+    } else if (this.listeners[key]) { // check if key matches a listener name
+        let listener = this.listeners[key];
+        let event = this.events[listener.ev];
+        event.splice(key, 1);
+        delete this.listeners[key];
     }
 };
 /**
  * emit event
  * @param {string} event 
  */
-NJEvents.prototype.emit = function (event) {
+NJEvents.prototype.emit = function (name) {
     var args = [].slice.call(arguments, 1);
-    Object.keys(this.events[event] || {}).forEach(ev => {
-        let e = this.events[event][ev];
-        e.cb(args.length == 1 ? args[0] : args);
-        if (e.once)
-            this.off(event, ev);
+    (this.events[name] || []).forEach(key => {
+        let listener = this.listeners[key];
+        listener.cb(args.length == 1 ? args[0] : args);
+        if (listener.once)
+            this.off(name, ev);
     });
 };
