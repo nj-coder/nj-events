@@ -1,4 +1,4 @@
-var NJEvent = function () {
+var NJEvents = function () {
     this.events = {};
 };
 /**
@@ -7,7 +7,7 @@ var NJEvent = function () {
  * @param {function} cb
  * @param {string} id
  */
-NJEvent.prototype.on = function (event, cb, id) {
+NJEvents.prototype.on = function (event, cb, id) {
     if (typeof (cb) != 'function') {
         throw ('invalid listener.');
     }
@@ -20,7 +20,7 @@ NJEvent.prototype.on = function (event, cb, id) {
 /** 
  * register a one time event 
 */
-NJEvent.prototype.once = function (event, listener, id) {
+NJEvents.prototype.once = function (event, listener, id) {
     let ev = this.on(event, listener, id);
     this.events[event][ev].once = true;
 };
@@ -29,7 +29,7 @@ NJEvent.prototype.once = function (event, listener, id) {
  * @param {string} event 
  * @param {string} evID 
  */
-NJEvent.prototype.off = function (event, evID) {
+NJEvents.prototype.off = function (event, evID) {
     if (event && evID) {
         delete this.events[event][evID];
     } else {
@@ -40,7 +40,7 @@ NJEvent.prototype.off = function (event, evID) {
  * emit event
  * @param {string} event 
  */
-NJEvent.prototype.emit = function (event) {
+NJEvents.prototype.emit = function (event) {
     var args = [].slice.call(arguments, 1);
     Object.keys(this.events[event] || {}).forEach(ev => {
         let e = this.events[event][ev];
