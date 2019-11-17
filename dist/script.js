@@ -1,9 +1,6 @@
-if (typeof global === 'object' && !global.NJEvent) {
-    global.NJEvent = function () {
-        this.events = {};
-    };
-    global.NJEvent.version = 'v0.0.100';
-}
+var NJEvent = function () {
+    this.events = {};
+};
 /**
  * register event
  * @param {string} event
