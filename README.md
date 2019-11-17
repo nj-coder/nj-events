@@ -17,3 +17,6 @@ const id = emitter.on('hey', data => {
 emitter.emit('hey', 'how\'s it going?');
 emitter.off('hey', id); /*OR*/ emitter.off('hey');
 ```
+## Dependencies
+
+There are no hard dependencies. The only reason you will want to run `npm install` to grab the development dependencies is to build the documentation or minify the source code. No other scripts are required to actually use EventEmitter.
