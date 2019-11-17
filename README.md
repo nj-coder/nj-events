@@ -2,10 +2,9 @@
 
 Simple and light-weight event emitter library for JavaScript.
 
-* Less than **1KB**.
+* No dependencies, tess than **1KB** pure JavaScript implementation.
 * `on` method returns `ID`. Use this `ID` to remove specific listener or `event-name` to remove all the listeners.
-* No aliases, just `emit` and `on` methods.
-* No dependencies, pure JavaScript implementation
+* No aliases, just `emit`, `on` and `off` methods.
 
 ```js
 const emitter = new NJEvents();
