@@ -1,0 +1,1 @@
+export default class NJEvent{constructor(){this.events={};console.log(12)}}
