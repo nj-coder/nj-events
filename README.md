@@ -17,17 +17,17 @@ emitter.emit('hey', 'how are you?');
 emitter.off(id); 
 ```
 ## Dependencies
-There are no hard dependencies to actually use EventEmitter. The only reason you will want to run `npm install` to grab the development dependencies is to build the documentation or minify the source code. 
+There are no hard dependencies to actually use NJEvents. The only reason you will want to run `npm install` is to build/modify the source code. 
 
 ## Installation
-NJ-TimePicker can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
+NJ-Events can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
 ### Using npm
 ```
-npm install --save nj-timepicker
+npm install --save nj-events
 ```
 
 ## Releases and Changes
 Check out the [Releases](https://github.com/nj-coder/nj-events/releases) and [Change Logs](https://github.com/nj-coder/nj-events/blob/master/Changelog.md) for more information. 
 
 ## Copyright and License
-[The MIT license](LICENSE.md) 
+[The MIT license](LICENSE) 
