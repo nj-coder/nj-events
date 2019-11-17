@@ -5,41 +5,47 @@ class NJEvent {
     /**
      * register event
      */
-    on(event, listener, once) {
-        if (typeof (listener) != 'function') {
-            throw ('listener is not a function');
+    on(event, cb, id) {
+        if (typeof (cb) != 'function') {
+            throw ('invalid listener.');
         }
-        let evID = Math.random().toString(36).substring(7);
+        let evID = id || Math.random().toString(36).substring(7);
         (this.events[event] = this.events[event] || {})[evID] = {
-            listener: listener,
-            once: once
+            cb: cb
         };
         return evID;
     }
+    /** 
+     * register a one time event 
+    */
+    once(event, listener, id) {
+        let ev = this.on(event, listener, id);
+        this.events[event][ev].once = true;
+    }
     /**
      * unregister event
+     * @param {string} event 
+     * @param {string} evID 
      */
     off(event, evID) {
-        if (typeof (event) == 'undefined' && typeof (evID) == 'undefined') {
-            this.events = {};
+        if (event && evID) {
+            delete this.events[event][evID];
         } else {
-            if (event && evID) {
-                delete this.events[event][evID];
-            } else {
-                delete this.events[event];
-            }
+            delete this.events[event];
         }
     }
     /**
      * emit event
+     * @param {string} event 
      */
     emit(event) {
         var args = [].slice.call(arguments, 1);
-        if (this.events[event]) {
-            Object.keys(this.events[event]).forEach(ev => {
-                this.events[event][ev].listener.call(null, args.length == 1 ? args[0] : args);
-            });
-        }
+        Object.keys(this.events[event] || {}).forEach(ev => {
+            let e = this.events[event][ev];
+            e.cb(args.length == 1 ? args[0] : args);
+            if (e.once)
+                this.off(event, ev);
+        });
     }
 
 }
