@@ -55,6 +55,6 @@ NJEvents.prototype.emit = function (name) {
         let listener = this.listeners[key];
         listener.cb(args.length == 1 ? args[0] : args);
         if (listener.once)
-            this.off(name, ev);
+            this.off(name);
     });
 };
