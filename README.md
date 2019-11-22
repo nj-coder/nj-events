@@ -26,19 +26,29 @@ npm install --save nj-events
 NJ-Events are driven by the `on`, `emit`, `off` methods which are detailed below.
 
 ### Registering an event
+Registering the event can be done using 
+* `on()` - the listener is registered and will be active until removed explicitly.
+* `once()` - the listener is removed after first trigger.
 ```js
 const emitter = new NJEvents();
 
-const id = emitter.on('hey', data => {
+const id_on = emitter.on('hey', data => { // listener is registered until removed
+  console.log(data);
+});
+
+const id_once = emitter.once('hey', data => { // listener is removed after first trigger
   console.log(data);
 });
 ```
 ### Triggering an event
+An event is triggered using the `emit()`
 ```js
 emitter.emit('hey', 'how are you?');
-emitter.off(id); 
 ```
 ### Unregistering an event
+An event can be unregistered using the `off()` with the below parameters
+* `event_name` - any matching events and its listeners will be removed.
+* `id` - event with the particular id will be removed, the event would still exist.
 ```js
 emitter.off('hey'); // unregister using event-name 
 emitter.off(id); // unregister using the event ID
