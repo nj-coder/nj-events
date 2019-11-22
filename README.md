@@ -2,8 +2,8 @@
 
 Simple and light-weight event emitter library for JavaScript.
 
-* No dependencies, tess than **1KB** pure JavaScript implementation.
-* `on` method returns `ID`. Use this `ID` to remove specific listener or `event-name` to remove all the listeners.
+* No dependencies, less than **1KB** pure JavaScript implementation.
+* `on` method returns an `ID`. Use this `ID` to remove specific listener or the `event-name` to remove all the listeners.
 * No aliases, just `emit`, `on` and `off` methods.
 
 ```js
@@ -28,6 +28,7 @@ NJ-Events are driven by the `on`, `emit`, `off` methods which are detailed below
 ### Registering an event
 * `on()` - the listener is registered and will be active until removed explicitly.
 * `once()` - the listener is removed after first trigger.
+* both methods take an `event_name:string`, `callback:function` and an optional `id:string` as parameters.
 ```js
 const emitter = new NJEvents();
 
@@ -38,9 +39,13 @@ const id_on = emitter.on('hey', data => { // listener is registered until remove
 const id_once = emitter.once('hey', data => { // listener is removed after first trigger
   console.log(data);
 });
+
+const custom_id = emitter.on('hey', data => { // init with custom id
+  console.log(data);
+}, YOUR_CUSTOM_ID);
 ```
 ### Triggering an event
-An event is triggered using the `emit()`
+An event is triggered using the `emit()` by passing the `event_name:string` and `data:any`
 ```js
 emitter.emit('hey', 'how are you?');
 ```
