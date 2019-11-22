@@ -18,12 +18,31 @@ emitter.off(id);
 ```
 
 ## Installation
-NJ-Events can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
-### Using npm
 ```
 npm install --save nj-events
 ```
 
+## Usage
+NJ-Events are driven by the `on`, `emit`, `off` methods which are detailed below.
+
+### Registering an event
+```js
+const emitter = new NJEvents();
+
+const id = emitter.on('hey', data => {
+  console.log(data);
+});
+```
+### Triggering an event
+```js
+emitter.emit('hey', 'how are you?');
+emitter.off(id); 
+```
+### Unregistering an event
+```js
+emitter.off('hey'); // unregister using event-name 
+emitter.off(id); // unregister using the event ID
+```
 ## Releases and Changes
 Check out the [Releases](https://github.com/nj-coder/nj-events/releases) and [Change Logs](https://github.com/nj-coder/nj-events/blob/master/Changelog.md) for more information. 
 
