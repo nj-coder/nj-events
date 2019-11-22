@@ -26,7 +26,6 @@ npm install --save nj-events
 NJ-Events are driven by the `on`, `emit`, `off` methods which are detailed below.
 
 ### Registering an event
-Registering the event can be done using 
 * `on()` - the listener is registered and will be active until removed explicitly.
 * `once()` - the listener is removed after first trigger.
 ```js
