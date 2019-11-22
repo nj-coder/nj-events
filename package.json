@@ -11,7 +11,12 @@
     "url": "git+https://github.com/nj-coder/nj-events.git"
   },
   "keywords": [
-    "event-emitter"
+    "event-emitter",
+    "events",
+    "emitter",
+    "javascript",
+    "javascript-events",
+    "javascript-event-emitter"
   ],
   "author": "Nidhin Joseph",
   "license": "MIT",
