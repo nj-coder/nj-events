@@ -3,5 +3,5 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
  
-## [1.0.0] - 2019-11-23
+## [1.1.100] - 2019-11-23
  - First version
