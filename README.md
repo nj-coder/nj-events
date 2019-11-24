@@ -30,7 +30,7 @@ import NJEvents from 'nj-events';
 const emitter = new NJEvents();
 ```
 
-Alertnatively you can include the `script.js` script before the closing `</body>` tag and then in your JS create a new instance of Plyr as below.
+Alertnatively you can include the `script.js` script before the closing `</body>` tag and then in your JS create a new instance of NJEvents as below.
 
 ```html
 <script src="path/to/script.js"></script>
