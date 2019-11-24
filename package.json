@@ -24,9 +24,7 @@
     "url": "https://github.com/nj-coder/nj-events/issues"
   },
   "homepage": "https://github.com/nj-coder/nj-events#readme",
-  "dependencies": {
-    "@babel/core": "^7.7.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "del": "^5.1.0",
     "gulp": "^4.0.2",
