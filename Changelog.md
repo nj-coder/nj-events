@@ -3,5 +3,9 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
  
+## [1.1.101] - 2019-11-30
+### Fixed
+- Issue with package.json pointing to wrong entry point
+
 ## [1.1.100] - 2019-11-23
  - First version
