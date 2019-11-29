@@ -1,6 +1,6 @@
 {
   "name": "nj-events",
-  "version": "1.1.110",
+  "version": "1.1.101",
   "description": "ID based simple and light-weight (1KB) event emitter library for JavaScript.",
   "main": "dist/script.min.js",
   "scripts": {
