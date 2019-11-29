@@ -18,7 +18,12 @@ gulp.task('build', function () {
             entry: "./src/index.js"
         }))
         .pipe(rename("script.js"))
-        .pipe(minify())
+        .pipe(minify({
+            ext:{
+                src:'.js',
+                min: '.min.js'
+            }
+        }))
         .pipe(gulp.dest(destFolder));
 });
 
